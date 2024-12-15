@@ -1,12 +1,4 @@
 {% if message.author == user %}
-<style>
-    .profile-pic {
-        width: 2.5rem; 
-        height: 2.5rem; 
-        object-fit: cover; /* Ensures the image fits nicely within the defined dimensions */
-        border-radius: 50%; 
-    }
-</style>
 <li class="tw-flex tw-justify-end tw-mb-4">
     <div class="tw-bg-red-200 tw-rounded-full tw-px-4 tw-py-2 tw-max-w-[75%]">
         <span>{{ message.body }}</span>
@@ -16,13 +8,13 @@
 <li>
     <div class="tw-flex tw-justify-start">
         <a href="/profile/{{message.author.username}}" target="_blank">
-            <span class="tw-text-gray-500">{{ message.author.username }}</span>
+            <span class="tw-text-gray-500">{{ message.author.name }}</span>
         </a>
     </div>
     <div class="tw-flex tw-justify-start">
         <a href="/profile/{{message.author.username}}" target="_blank">
             {% if message.author.profile.profile_image %}
-            <img src="{{ message.author.profile.profile_image.url }}" alt="{{ message.author.username }}'s Profile Picture" class="profile-pic">
+            <img src="{{ message.author.profile.profile_image.url }}" alt="{{ message.author.name }}'s Profile Picture" class="profile-pic">
             {% else %}
             <img src="/media/images/fallback.png" alt="Default Profile Picture" class="profile-pic">
             {% endif %}
