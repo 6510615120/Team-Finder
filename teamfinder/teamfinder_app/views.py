@@ -18,9 +18,12 @@ User = get_user_model()
 
 def is_requestable(user, post_id):
     recruit = RecruitPost.objects.filter(post_id=post_id).first()
-    if not recruit or not recruit.status:
+    team = Team.objects.filter(recruit_post__post_id=post_id).first()
+    if not recruit or not recruit.status or not team:
         return False
-    
+
+    if TeamMember.objects.filter(team=team, member=user).first():
+        return False
     requirement = Requirement.objects.get(post=recruit)
     faculty_list = [faculty.name for faculty in requirement.req_faculty.all()]
     major_list = [major.name for major in requirement.req_major.all()]
