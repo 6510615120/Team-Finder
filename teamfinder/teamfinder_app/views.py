@@ -637,7 +637,7 @@ def feedback(request, team_id):
 
     is_join_team = TeamMember.objects.filter(team=team, member=user).first()
     is_finish = team.recruit_post.finish if team else False
-    is_feedbacked = Feedback.objects.filter(team=team).first() #in case that only feedback 1 user
+    is_feedbacked = Feedback.objects.filter(team=team, reviewer=user).first() #in case that only feedback 1 user
 
     if (not is_finish) or (not is_join_team) or (not team) or is_feedbacked:
         return render(request, 'pagenotfound.html', status=404)
