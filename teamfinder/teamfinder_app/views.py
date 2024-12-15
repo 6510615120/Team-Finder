@@ -612,8 +612,8 @@ def post_result(request, post_id):
 
         result_post = ResultPost.objects.create(
             post=post,
-            tag=tags
         )
+        result_post.tag.set(tags)
         result_post.save()
 
         return redirect('/result')
