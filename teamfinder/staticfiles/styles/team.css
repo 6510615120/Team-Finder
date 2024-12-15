@@ -160,3 +160,10 @@ h1 {
     border-radius: 5px;
     margin-left: 20px;
 }
+
+.profile-pic {
+    width: 2.5rem; 
+    height: 2.5rem; 
+    object-fit: cover; /* Ensures the image fits nicely within the defined dimensions */
+    border-radius: 50%; 
+}
